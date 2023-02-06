@@ -1,10 +1,27 @@
 <odoo>
     <data>
-        
+
+        <!-- client search view -->
+
+        <record id="frusec_client_view_search" model="ir.ui.view">
+            <field name="name">frusec.client.search</field>
+            <field name="model">frusec.client</field>
+            <field name="arch" type="xml">
+                <search string="Clients">
+                    <field name="name" />
+                    <field name="phone" />
+                    <field name="contact" />
+                    <field name="note" />
+                    <separator />
+                </search>
+            </field>
+        </record>
+
         <!-- client form view -->
 
         <record id="frusec_order_view_form" model="ir.ui.view">
-            <field name="name">frusec.client.form</field>
+            <field name="name">
+                frusec.client.form</field>
             <field name="model">frusec.client</field>
             <field name="arch" type="xml">
                 <form string='Clients'>
@@ -27,7 +44,8 @@
         <!-- actions opening views on models -->
 
         <record model="ir.actions.act_window" id="client_action_window">
-            <field name="name">Client List</field>
+            <field name="name">Client
+                List</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">frusec.client</field>
             <field name="view_mode">tree,form</field>
