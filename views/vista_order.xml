@@ -19,8 +19,7 @@
     <!-- order calendar view -->
 
     <record id="frusec_order_view_calendar" model="ir.ui.view">
-      <field name="name">
-        frusec.order.calendar</field>
+      <field name="name">frusec.order.calendar</field>
       <field name="model">frusec.order</field>
       <field name="arch" type="xml">
         <calendar string="" date_start="datetime" color="order_code">
@@ -29,78 +28,16 @@
       </field>
     </record>
     
-    <!-- product kanban view -->
-    <record id="frusec_order_view_kanban" model="ir.ui.view">
-      <field name="name">frusec.order.kanban</field>
-      <field name="model">frusec.order</field>
-      <field name="arch" type="xml">
-        <kanban>
-          <templates>
-            <t t-name="kanban-box">
-
-            </t>
-          </templates>
-        </kanban>
-      </field>
-    </record>
-
-    <!-- client form view -->
-
-    <record id="frusec_order_view_form" model="ir.ui.view">
-      <field name="name">frusec.client.form</field>
-      <field name="model">frusec.client</field>
-      <field name="arch" type="xml">
-        <form string='Clients'>
-          <sheet>
-            <group>
-              <group>
-                <field name="name"></field>
-              </group>
-              <group>
-                <field name="phone"></field>
-                <field name="contact"></field>
-                <field name="note"></field>
-              </group>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="order_action_window">
       <field name="name">Order List</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">frusec.order</field>
-      <field name="view_mode">tree,calendar</field>
+      <field name="view_mode">tree,form,calendar</field>
       <field name="help" type="html">
           <p class="o_view_nocontent_smiling_face">
           Create a new order!
-        </p>
-      </field>
-    </record>
-
-    <record model="ir.actions.act_window" id="product_action_window">
-      <field name="name">Product List</field>
-      <field name="type">ir.actions.act_window</field>
-      <field name="res_model">frusec.product</field>
-      <field name="view_mode">tree,kanban</field>
-      <field name="help" type="html">
-        <p class="o_view_nocontent_smiling_face">
-          Create a new product!
-        </p>
-      </field>
-    </record>
-
-    <record model="ir.actions.act_window" id="client_action_window">
-      <field name="name">Client List</field>
-      <field name="type">ir.actions.act_window</field>
-      <field name="res_model">frusec.client</field>
-      <field name="view_mode">tree,form</field>
-      <field name="help" type="html">
-        <p class="o_view_nocontent_smiling_face">
-          Create a new client!
         </p>
       </field>
     </record>
@@ -113,10 +50,6 @@
 
     <menuitem name="Orders" id="frusec_orders" parent="frusec_root" sequence="10"
       action="order_action_window" />
-    <menuitem name="Products" id="frusec_products" parent="frusec_root" sequence="20"
-      action="product_action_window" />
-    <menuitem name="Clients" id="frusec_clients" parent="frusec_root" sequence="30"
-      action="client_action_window" />
 
   </data>
 </odoo>
