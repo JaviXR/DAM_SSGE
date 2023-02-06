@@ -28,7 +28,7 @@
     'category': 'Sale Management',
 
     # Icon for the module
-    'images': ['resources/logo.jpg'],
+    'images': ['static/description/icon.png'],
 
     # any module necessary for this one to work correctly
     'depends': [],

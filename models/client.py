@@ -7,5 +7,5 @@ class Order(models.Model):
 
     name = fields.Char(string='Name', required=True)
     phone = fields.Text(string='Phone', default='+34 123444555')
-    contact = fields.Html(string='Contact', default='mailto:aaaaa@bbbb.ccc')
+    contact = fields.Text(string='Contact', default='aaaaa@bbbb.ccc')
     note = fields.Text(string='Note')
