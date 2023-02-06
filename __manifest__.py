@@ -10,6 +10,8 @@
 
     'license': "AGPL-3",
 
+    'sequence': -100,
+
     #'complexity': 'easy',
 
     # Short (1 phrase/line) summary of the module's purpose, used as subtitle on 
@@ -29,18 +31,18 @@
     'images': ['resources/logo.jpg'],
 
     # any module necessary for this one to work correctly
-    'depends': ['hr','sale_management','stock'],
+    'depends': [],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/vista_main.xml',
-        #'views/templates.xml',
+        #'views/vista_product.xml',
     ],
     # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+    #'demo': [
+    #    'demo/demo.xml',
+    #],
 
     # to make your module an application.
     'application': True,

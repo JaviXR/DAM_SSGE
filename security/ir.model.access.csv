@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_main_main,main.main,model_main_main,base.group_user,1,1,1,1
+access_frusec_order,access.frusec.order,model_frusec_order,,1,1,1,1
+access_frusec_product,access.frusec.product,model_frusec_product,,1,1,1,1
+access_frusec_client,access.frusec.client,model_frusec_client,,1,1,1,1
