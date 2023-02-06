@@ -6,6 +6,6 @@ class Product(models.Model):
     _description = 'Product template'
     
     name = fields.Text(string='Name', required=True)
-    #field_name = fields.Image(string='field_name', max_width=50, max_height=50)
+    image = fields.Image(string='Image')
     price = fields.Integer(string='Price', required=True)
     note = fields.Text(string='Note')
