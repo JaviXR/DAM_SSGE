@@ -1,6 +1,29 @@
 <odoo>
   <data>
 
+    <!-- order search view -->
+    
+    <record id="frusec_order_view_search" model="ir.ui.view">
+      <field name="name">frusec.order.search</field>
+      <field name="model">frusec.order</field>
+      <field name="arch" type="xml">
+        <search string="Orders">
+          <field name="order_code" />
+          <field name="client" />
+          <field name="datetime" />
+          <field name="note" />
+          <separator />
+          <filter name="status_1" string="Processing" domain="[('status', '=', 'status_1')]" />
+          <filter name="status_2" string="Sent" domain="[('status', '=', 'status_2')]" />
+          <filter name="status_3" string="Received" domain="[('status', '=', 'status_3')]" />
+          <filter name="status_4" string="Completed" domain="[('status', '=', 'status_4')]" />
+          <group expand="1" string="Group By">
+            <filter name="client" string="Client" context="{'group_by': 'client'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
     <!-- order tree view -->
 
     <record id="frusec_order_view_tree" model="ir.ui.view">
@@ -15,7 +38,7 @@
         </tree>
       </field>
     </record>
-    
+
     <!-- order calendar view -->
 
     <record id="frusec_order_view_calendar" model="ir.ui.view">
@@ -27,13 +50,14 @@
         </calendar>
       </field>
     </record>
-    
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="order_action_window">
       <field name="name">Order List</field>
       <field name="type">ir.actions.act_window</field>
-      <field name="res_model">frusec.order</field>
+      <field name="res_model">
+        frusec.order</field>
       <field name="view_mode">tree,form,calendar</field>
       <field name="help" type="html">
           <p class="o_view_nocontent_smiling_face">
