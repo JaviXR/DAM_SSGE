@@ -1,7 +1,7 @@
 <odoo>
     <data>
 
-        <!-- product search view-->
+        <!-- product search view -->
 
         <record id="frusec_product_view_search" model="ir.ui.view">
             <field name="name">frusec.product.search</field>
@@ -20,15 +20,35 @@
         </record>
 
         <!-- product kanban view -->
-        <record id="frusec_order_view_kanban" model="ir.ui.view">
-            <field name="name">
-                frusec.order.kanban</field>
-            <field name="model">frusec.order</field>
+        <record id="frusec_product_view_kanban" model="ir.ui.view">
+            <field name="name">frusec.product.kanban</field>
+            <field name="model">frusec.product</field>
             <field name="arch" type="xml">
                 <kanban>
+                    <field name="name" />
+                    <field name="image" />
+                    <field name="price" />
+                    <field name="note" />
+                    <field name="id" />
+                    
                     <templates>
                         <t t-name="kanban-box">
-
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img class="o_kanban_image_inner_pic"
+                                        t-att-src="kanban_image('frusec.product', 'image', record.id.raw_value)" />
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            Name: <field name="name" />
+                                        </li>
+                                        <li>
+                                            Price: <field name="price" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </t>
                     </templates>
                 </kanban>
@@ -38,8 +58,7 @@
         <!-- actions opening views on models -->
 
         <record model="ir.actions.act_window" id="product_action_window">
-            <field name="name">Product
-                List</field>
+            <field name="name">Product List</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">frusec.product</field>
             <field name="view_mode">tree,kanban,form</field>
