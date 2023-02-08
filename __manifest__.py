@@ -36,10 +36,10 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'views/data.xml',
         'views/vista_order.xml',
         'views/vista_product.xml',
         'views/vista_client.xml',
-        #'views/vista_product.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [

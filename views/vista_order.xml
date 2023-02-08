@@ -13,8 +13,8 @@
           <field name="datetime" />
           <field name="note" />
           <separator />
-          <filter name="state_0" string="Canceled" domain="[('state', '=', 'state_0')]" />
-          <filter name="state_1" string="Processing" domain="[('state', '=', 'state_1')]" />
+          <filter name="state_0" string="Processing" domain="[('state', '=', 'state_0')]" />
+          <filter name="state_1" string="Canceled" domain="[('state', '=', 'state_1')]" />
           <filter name="state_2" string="Sent" domain="[('state', '=', 'state_2')]" />
           <filter name="state_3" string="Received" domain="[('state', '=', 'state_3')]" />
           <filter name="state_4" string="Completed" domain="[('state', '=', 'state_4')]" />
@@ -35,22 +35,9 @@
           <field name="order_code"></field>
           <field name="client_id"></field>
           <field name="datetime"></field>
+          <field name="price" widget="monetary"></field>
           <field name="state"></field>
         </tree>
-      </field>
-    </record>
-
-    <!-- order calendar view -->
-
-    <record id="frusec_order_view_calendar" model="ir.ui.view">
-      <field name="name">frusec.order.calendar</field>
-      <field name="model">frusec.order</field>
-      <field name="arch" type="xml">
-        <calendar string="Orders Calendar" date_start="datetime" color="order_code" mode="month" quick_add="false">
-          <field name="order_code" />
-          <field name="client_id" />
-          <field name="state" />
-        </calendar>
       </field>
     </record>
 
@@ -69,14 +56,19 @@
               statusbar_visible="status_0,status_2,status_3,status_4" />
           </header>
           <sheet>
+            <div class='oe_title'>
+              <h1>
+                <field name="order_code" readonly='1'></field>
+              </h1>
+            </div>
             <group>
               <group>
-                <field name="order_code" />
-                <field name="client_id" />
+                <field name="client_id"></field>
+                <field name="price" widget="monetary"></field>
               </group>
               <group>
-                <field name="datetime" />
-                <field name="note" />
+                <field name="datetime"></field>
+                <field name="note"></field>
               </group>
             </group>
           </sheet>
@@ -84,10 +76,25 @@
       </field>
     </record>
 
+    <!-- order calendar view -->
+
+    <record id="frusec_order_view_calendar" model="ir.ui.view">
+      <field name="name">frusec.order.calendar</field>
+      <field name="model">frusec.order</field>
+      <field name="arch" type="xml">
+        <calendar string="Orders Calendar" date_start="datetime" color="order_code" mode="month" quick_add="false">
+          <field name="order_code" />
+          <field name="client_id" />
+          <field name="state" />
+        </calendar>
+      </field>
+    </record>
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="order_action_window">
-      <field name="name">Order List</field>
+      <field name="name">Order
+        List</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">frusec.order</field>
       <field name="view_mode">tree,form,calendar</field>

@@ -7,5 +7,8 @@ class Product(models.Model):
     
     name = fields.Char(string='Name', required=True)
     image = fields.Image(string='Image')
+    company_id = fields.Many2one(comodel_name='res.company', string='Compamy', 
+                                default=lambda self: self.env.company)
+    currency_id = fields.Many2one(comodel_name='res.currency', related='company_id.currency_id')
     price = fields.Float(string='Price', required=True, default='0,00')
     note = fields.Text(string='Note')

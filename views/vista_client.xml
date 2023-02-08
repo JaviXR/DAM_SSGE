@@ -11,6 +11,7 @@
                     <field name="name" />
                     <field name="phone" />
                     <field name="contact" />
+                    <field name="website" />
                     <field name="note" />
                     <separator />
                 </search>
@@ -28,11 +29,12 @@
                         <group>
                             <group>
                                 <field name="name"></field>
+                                <field name="note"></field>
                             </group>
                             <group>
                                 <field name="phone"></field>
                                 <field name="contact"></field>
-                                <field name="note"></field>
+                                <field name="website"></field>
                             </group>
                         </group>
                     </sheet>

@@ -6,6 +6,7 @@ class Order(models.Model):
     _description = 'Client template'
 
     name = fields.Char(string='Name', required=True)
-    phone = fields.Text(string='Phone', default='+34 123444555')
-    contact = fields.Text(string='Contact', default='aaaaa@bbbb.ccc')
+    phone = fields.Char(string='Phone')
+    contact = fields.Char(string='Email')
+    website = fields.Char(string='Website')
     note = fields.Text(string='Note')
