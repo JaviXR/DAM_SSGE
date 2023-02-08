@@ -6,13 +6,16 @@ class Order(models.Model):
     _description = 'Order template'
 
     order_code = fields.Char(string='Code', required=True)
-    client = fields.Char(string='Client', required=True)
+    client_id = fields.Char(string='Client', required=True)
     datetime = fields.Date(string='Date', default=lambda self:fields.Date.today(), required=True)
-    status = fields.Selection([
-        ('status_1', 'Processing'),
+    state = fields.Selection([
+        ('status_0', 'Processing'),
+        ('status_1', 'Canceled'),
         ('status_2', 'Sent'),
         ('status_3', 'Received'),
-        ('status_4', 'Completed'),
-    ], string='Status', default='status_1', required=True)
+        ('status_4', 'Completed')
+    ], string='Status', default='status_0', required=True)
     note = fields.Text(string='Note')
 
+    def action_cancel(self):
+        self.state="status_1"

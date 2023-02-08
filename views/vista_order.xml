@@ -9,16 +9,17 @@
       <field name="arch" type="xml">
         <search string="Orders">
           <field name="order_code" />
-          <field name="client" />
+          <field name="client_id" />
           <field name="datetime" />
           <field name="note" />
           <separator />
-          <filter name="status_1" string="Processing" domain="[('status', '=', 'status_1')]" />
-          <filter name="status_2" string="Sent" domain="[('status', '=', 'status_2')]" />
-          <filter name="status_3" string="Received" domain="[('status', '=', 'status_3')]" />
-          <filter name="status_4" string="Completed" domain="[('status', '=', 'status_4')]" />
+          <filter name="state_0" string="Canceled" domain="[('state', '=', 'state_0')]" />
+          <filter name="state_1" string="Processing" domain="[('state', '=', 'state_1')]" />
+          <filter name="state_2" string="Sent" domain="[('state', '=', 'state_2')]" />
+          <filter name="state_3" string="Received" domain="[('state', '=', 'state_3')]" />
+          <filter name="state_4" string="Completed" domain="[('state', '=', 'state_4')]" />
           <group expand="1" string="Group By">
-            <filter name="client" string="Client" context="{'group_by': 'client'}" />
+            <filter name="client_id" string="Client" context="{'group_by': 'client_id'}" />
           </group>
         </search>
       </field>
@@ -32,9 +33,9 @@
       <field name="arch" type="xml">
         <tree>
           <field name="order_code"></field>
-          <field name="client"></field>
+          <field name="client_id"></field>
           <field name="datetime"></field>
-          <field name="status"></field>
+          <field name="state"></field>
         </tree>
       </field>
     </record>
@@ -45,9 +46,41 @@
       <field name="name">frusec.order.calendar</field>
       <field name="model">frusec.order</field>
       <field name="arch" type="xml">
-        <calendar string="" date_start="datetime" color="order_code">
-
+        <calendar string="Orders Calendar" date_start="datetime" color="order_code" mode="month" quick_add="false">
+          <field name="order_code" />
+          <field name="client_id" />
+          <field name="state" />
         </calendar>
+      </field>
+    </record>
+
+    <!-- order form view -->
+
+    <record id="frusec_order_view_form" model="ir.ui.view">
+      <field name="name">frusec.order.form</field>
+      <field name="model">frusec.order</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button id="button_cancel" string="Cancel Order" name="action_cancel" type="object"
+              states="state_0" />
+            <field name="state" widget="statusbar"
+              options="{'clickable': '1'}"
+              statusbar_visible="status_0,status_2,status_3,status_4" />
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="order_code" />
+                <field name="client_id" />
+              </group>
+              <group>
+                <field name="datetime" />
+                <field name="note" />
+              </group>
+            </group>
+          </sheet>
+        </form>
       </field>
     </record>
 
@@ -59,7 +92,7 @@
       <field name="res_model">frusec.order</field>
       <field name="view_mode">tree,form,calendar</field>
       <field name="help" type="html">
-          <p class="o_view_nocontent_smiling_face">
+        <p class="o_view_nocontent_smiling_face">
           Create a new order!
         </p>
       </field>
