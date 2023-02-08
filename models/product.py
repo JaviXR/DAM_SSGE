@@ -5,7 +5,7 @@ class Product(models.Model):
     _name = 'frusec.product'
     _description = 'Product template'
     
-    name = fields.Text(string='Name', required=True)
+    name = fields.Char(string='Name', required=True)
     image = fields.Image(string='Image')
-    price = fields.Integer(string='Price', required=True)
+    price = fields.Float(string='Price', required=True, default='0,00')
     note = fields.Text(string='Note')
