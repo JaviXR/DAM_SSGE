@@ -28,7 +28,8 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name" />
-                    <field name="price" widget="monetary" />
+                    <field name="currency_id" invisible="1"/>
+                    <field name="price" />
                 </tree>
             </field>
         </record>
@@ -61,8 +62,7 @@
         <!-- product kanban view -->
 
         <record id="frusec_product_view_kanban" model="ir.ui.view">
-            <field name="name">
-                frusec.product.kanban</field>
+            <field name="name">frusec.product.kanban</field>
             <field name="model">frusec.product</field>
             <field name="arch" type="xml">
                 <kanban>

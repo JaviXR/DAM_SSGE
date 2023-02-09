@@ -10,5 +10,5 @@ class Product(models.Model):
     company_id = fields.Many2one(comodel_name='res.company', string='Company', 
                                 default=lambda self: self.env.company)
     currency_id = fields.Many2one(comodel_name='res.currency', related='company_id.currency_id')
-    price = fields.Float(string='Price', required=True, default=0.00)
+    price = fields.Monetary(string='Price', required=True, default=0.00)
     note = fields.Text(string='Description')

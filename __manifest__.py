@@ -38,6 +38,7 @@
         'security/ir.model.access.csv',
         'views/data.xml',
         'views/vista_order.xml',
+        'views/vista_order_line.xml',
         'views/vista_product.xml',
         'views/vista_client.xml',
     ],

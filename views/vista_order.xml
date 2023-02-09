@@ -35,8 +35,8 @@
 					<field name="order_code" />
 					<field name="client_id" />
 					<field name="datetime" />
-					<field name="price" widget="monetary" sum='Total: '/>
 					<field name="state" />
+					<field name="total_price" />
 				</tree>
 			</field>
 		</record>
@@ -61,7 +61,8 @@
 							</div>
 							<group>
 								<field name="client_id" />
-								<field name="price" />
+								<field name="product_lines" invisible="1" />
+								<field name="total_price" />
 								<field name="currency_id" invisible="1" />
 							</group>
 							<group>
