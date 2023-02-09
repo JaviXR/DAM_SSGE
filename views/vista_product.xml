@@ -22,13 +22,39 @@
         <!-- product tree view -->
 
         <record id="frusec_product_view_tree" model="ir.ui.view">
-            <field name="name">frusec.product.tree</field>
+            <field name="name">
+                frusec.product.tree</field>
             <field name="model">frusec.product</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"></field>
-                    <field name="price" widget="monetary"></field>
+                    <field name="name" />
+                    <field name="price" widget="monetary" />
                 </tree>
+            </field>
+        </record>
+
+        <!-- product form view -->
+
+        <record id="frusec_product_view_form" model="ir.ui.view">
+            <field name="name">frusec.product.form</field>
+            <field name="model">frusec.product</field>
+            <field name="arch" type="xml">
+                <form string='Products'>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="price" />
+                                <field name="note"/>
+                            </group>
+                            <group>
+                                <field name="image" />
+                                <field name="company_id" invisible="1" />
+                                <field name="currency_id" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
             </field>
         </record>
 
@@ -40,18 +66,20 @@
             <field name="model">frusec.product</field>
             <field name="arch" type="xml">
                 <kanban>
+                    <field name="id" />
                     <field name="name" />
                     <field name="image" />
+                    <field name="currency_id" />
                     <field name="price" />
                     <field name="note" />
-                    <field name="id" />
                     
                     <templates>
                         <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click">
-                                <div class="o_kanban_image">
-                                    <img class="o_kanban_image_inner_pic"
-                                        t-att-src="kanban_image('frusec.product', 'image', record.id.raw_value)" />
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="o_kanban_image d-none d-md-block"
+                                    t-attf-style="background-image:url('#{kanban_image('frusec.product', 'image', record.id.raw_value, placeholder)}')">
+                                    <!-- <img class="o_kanban_image_inner_pic"
+                                        t-att-src="kanban_image('frusec.product', 'image', record.id.raw_value)" /> -->
                                 </div>
                                 <div class="oe_kanban_details">
                                     <ul>
@@ -59,7 +87,7 @@
                                             <field name="name" />
                                         </li>
                                         <li>
-                                            <field name="price" widget="monetary"/>
+                                            <field name="price" widget="monetary" />
                                         </li>
                                     </ul>
                                 </div>

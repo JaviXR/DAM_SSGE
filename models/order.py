@@ -46,9 +46,9 @@ class OrderLine(models.Model):
 
     product_id = fields.Many2one('frusec.product', string='Product', required=True)
     product_price = fields.Float('Price', related='product_id.price')
-    currency_id = fields.Many2one(comodel_name='res.currency', related='frusec.order.currency_id')
-    product_qty = fields.Integer(string='Quantity', required=True, default=1)
     order_id = fields.Many2one('frusec.order', string='Order')
+    currency_id = fields.Many2one(comodel_name='res.currency', related='order_id.currency_id')
+    product_qty = fields.Integer(string='Quantity', required=True, default=1)
     price_subtotal = fields.Monetary('Price', compute='_compute_price_subtotal')
 
     @api.depends('product_price', 'product_qty')

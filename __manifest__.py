@@ -31,7 +31,7 @@
     'images': ['static/description/icon.png'],
 
     # any module necessary for this one to work correctly
-    'depends': [],
+    'depends': ['base'],
 
     # always loaded
     'data': [
