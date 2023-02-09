@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_frusec_order,access.frusec.order,model_frusec_order,,1,1,1,1
 access_frusec_product,access.frusec.product,model_frusec_product,,1,1,1,1
 access_frusec_client,access.frusec.client,model_frusec_client,,1,1,1,1
+access_frusec_order_line,access.frusec.order.line,model_frusec_order_line,,1,1,1,1
