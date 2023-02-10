@@ -8,11 +8,39 @@
 			<field name="model">frusec.order.line</field>
 			<field name="arch" type="xml">
 				<tree>
+					<field name="currency_id" invisible="1" />
 					<field name="product_name" />
-					<field name="product_price" />
+					<field name="product_price" widget="monetary" />
 					<field name="product_qty" />
-					<field name="price_subtotal" />
+					<field name="price_subtotal" sum="1" widget="monetary" />
 				</tree>
+			</field>
+		</record>
+		
+		<record id="frusec_order_line_view_form" model="ir.ui.view">
+			<field name="name">frusec.order.line.form</field>
+			<field name="model">frusec.order.line</field>
+			<field name="arch" type="xml">
+				<form string="">
+					<sheet>
+						<group>
+							<group string="">
+								<field name="product_id" />
+								<group>
+									<field name="currency_id" invisible="1" />
+									<field name="product_price" widget="monetary" />
+								</group>
+								<group>
+									<field name="product_qty" />
+								</group>
+							</group>
+							<group string=" ">
+								<field name="price_subtotal" widget="monetary" />
+								<field name="order_id" invisible="1" />
+							</group>
+						</group>
+					</sheet>
+				</form>
 			</field>
 		</record>
 
