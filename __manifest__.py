@@ -2,7 +2,7 @@
 {
     'name': "Frusec",
 
-    'version': '1.0',
+    'version': '1.12',
 
     'author': "Javier, Jose & Pedro",
 

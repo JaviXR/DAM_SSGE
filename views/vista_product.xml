@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
     <data>
 
@@ -12,7 +14,7 @@
                     <field name="note" />
                     <separator />
                     <group expand="1" string="Group By">
-                        <filter name="price" string="Price" context="{'group_by': 'price'}" />
+                        <filter name="price" string="Precio" context="{'group_by': 'price'}" />
                     </group>
                 </search>
             </field>
@@ -43,7 +45,7 @@
                         <group>
                             <group>
                                 <field name="name" />
-                                <field name="currency_id" />
+                                <field name="currency_id" invisible="1" />
                                 <field name="price" widget="monetary" />
                                 <field name="note" />
                             </group>
@@ -105,7 +107,7 @@
             <field name="view_mode">kanban,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create a new product!
+                    ¡Crea tu primer cliente!
                 </p>
             </field>
         </record>

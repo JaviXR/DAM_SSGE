@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
 	<data>
 
@@ -13,13 +15,14 @@
 					<field name="datetime" />
 					<field name="note" />
 					<separator />
-					<filter name="state_0" string="Processing" domain="[('state', '=', 'state_0')]" />
-					<filter name="state_1" string="Canceled" domain="[('state', '=', 'state_1')]" />
-					<filter name="state_2" string="Sent" domain="[('state', '=', 'state_2')]" />
-					<filter name="state_3" string="Received" domain="[('state', '=', 'state_3')]" />
-					<filter name="state_4" string="Completed" domain="[('state', '=', 'state_4')]" />
+					<filter name="state_0" string="Procesando" domain="[('state', '=', 'state_0')]" />
+					<filter name="state_1" string="Cancelado" domain="[('state', '=', 'state_1')]" />
+					<filter name="state_2" string="Enviado" domain="[('state', '=', 'state_2')]" />
+					<filter name="state_3" string="Entregado" domain="[('state', '=', 'state_3')]" />
+					<filter name="state_4" string="Completado" domain="[('state', '=', 'state_4')]" />
 					<group expand="1" string="Group By">
-						<filter name="client_id" string="Client" context="{'group_by': 'client_id'}" />
+						<filter name="client_id" string="Cliente" context="{'group_by': 'client_id'}" />
+						<filter name="client_id" string="Estado" context="{'group_by': 'state'}" />
 					</group>
 				</search>
 			</field>
@@ -36,6 +39,7 @@
 					<field name="client_id" />
 					<field name="datetime" />
 					<field name="state" />
+					<field name="currency_id" invisible="1" />
 					<field name="total_price" widget="monetary" />
 				</tree>
 			</field>
@@ -47,40 +51,51 @@
 			<field name="name">frusec.order.form</field>
 			<field name="model">frusec.order</field>
 			<field name="arch" type="xml">
-				<form>
-					<header>
-						<button id="button_cancel" string="Cancel Order" name="action_cancel" type="object" states="state_0" />
-						<field name="state" widget="statusbar" options="{'clickable': '1'}" statusbar_visible="status_0,status_2,status_3,status_4" />
-					</header>
+				<form string='Formulario de pedido'>
 					<sheet>
-						<group name="oder_code">
-							<group>
-								<field name="client_id" />
-								<field name="order_lines" invisible="1" />
-								<field name="currency_id" invisible="1" />
-								<field name="total_price" widget="monetary" />
-							</group>
-							<group>
-								<field name="datetime" />
-								<field name="note" />
-							</group>
+						<header>
+							<button id="button_next_state" string="Avanzar Estado" name="action_next_state"
+								type="object" class="btn-primary" states="state_0,state_2,state_3" />
+							<button id="button_cancel" string="Cancelar Pedido" name="action_cancel"
+								type="object" states="state_0" />
+							<field name="state" string="Estado del pedido" widget="statusbar"
+								statusbar_visible="state_0,state_2,state_3,state_4" />
+						</header>
+						<group>
+							<div class="oe_title">
+								<h1>
+									<field name="order_code" readonly="1" />
+								</h1>
+							</div>
 						</group>
 						<notebook>
-							<page name="page_products" string="Products">
+							<page name="page_details" string="Detalles">
+								<field name="currency_id" invisible="1" />
+								<group>
+									<field name="client_id" />
+									<field name="datetime" />
+									<field name="total_price" widget="monetary" />
+								</group>
+								<group>
+									<field name="note" />
+								</group>
+							</page>
+							<page name="page_products" string="Productos">
 								<field name="order_lines">
 									<tree editable="bottom">
+										<field name="currency_id" invisible="1" />
 										<field name="product_id" />
 										<field name="product_qty" />
-										<field name="product_price" widget="monetary"/>
-										<field name="order_id" invisible="1" />
+										<field name="price_subtotal" widget="monetary" />
 									</tree>
 									<form>
+										<field name="currency_id" invisible="1" />
 										<group>
 											<group>
-												<field name="product_id" />
+												<field name="product_name" />
 											</group>
 											<group>
-												<field name="product_qty" />
+												<field name="product_price" widget="monetary" />
 											</group>
 										</group>
 									</form>
@@ -98,9 +113,10 @@
 			<field name="name">frusec.order.calendar</field>
 			<field name="model">frusec.order</field>
 			<field name="arch" type="xml">
-				<calendar string="Orders Calendar" date_start="datetime" color="order_code"
+				<calendar string="Calendario de pedidos" date_start="datetime" color="order_code"
 					mode="month" quick_add="false">
 					<field name="order_code" />
+					<field name="id" invisible="1" />
 					<field name="client_id" />
 					<field name="state" />
 				</calendar>
@@ -110,13 +126,13 @@
 		<!-- actions opening views on models -->
 
 		<record model="ir.actions.act_window" id="order_action_window">
-			<field name="name">Order List</field>
+			<field name="name">Lista de pedidos</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">frusec.order</field>
 			<field name="view_mode">tree,form,calendar</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-					Create a new order!
+					¡Crea tu primer pedido!
 				</p>
 			</field>
 		</record>
@@ -127,7 +143,7 @@
 
 		<!-- menu categories -->
 
-		<menuitem name="Orders" id="frusec_orders" parent="frusec_root" sequence="10"
+		<menuitem name="Pedidos" id="frusec_orders" parent="frusec_root" sequence="10"
 			action="order_action_window" />
 
 	</data>
