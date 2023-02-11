@@ -55,9 +55,9 @@
 				<form string='Formulario de pedido'>
 					<sheet>
 						<header>
-							<button id="button_next_state" string="Avanzar Estado" name="action_next_state"
+							<button id="button_next_state" string="Avanzar estado" name="action_next_state"
 								type="object" class="btn-primary" states="state_0,state_2,state_3" />
-							<button id="button_cancel" string="Cancelar Pedido" name="action_cancel"
+							<button id="button_cancel" string="Cancelar pedido" name="action_cancel"
 								type="object" states="state_0" />
 							<field name="state" string="Estado del pedido" widget="statusbar"
 								statusbar_visible="state_0,state_2,state_3,state_4" />
@@ -114,12 +114,11 @@
 			<field name="name">frusec.order.calendar</field>
 			<field name="model">frusec.order</field>
 			<field name="arch" type="xml">
-				<calendar string="Calendario de pedidos" date_start="datetime" color="order_code"
-					mode="month" quick_add="false">
+				<calendar string="Calendario de pedidos" date_start="datetime" color="state"
+					mode="month" quick_add="false" event_open_popup="1" > 
 					<field name="order_code" />
-					<field name="id" invisible="1" />
-					<field name="client_id" />
-					<field name="state" />
+					<field name="client_id" filters="1" />
+					<field name="state" invisible="1" filters="1" />
 				</calendar>
 			</field>
 		</record>

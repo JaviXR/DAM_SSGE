@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 class OrderLine(models.Model):
     _name = 'frusec.order.line'
-    _description = 'Plantilla de lineas de pedido'
+    _description = 'Plantilla de linea de pedido'
 
     product_id = fields.Many2one('frusec.product', string='Producto', required=True)
     product_price = fields.Float('Precio', related='product_id.price')

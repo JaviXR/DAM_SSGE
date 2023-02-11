@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+
+#   Documentación usada
+#   https://www.odoo.com/documentation/12.0/developer/reference/orm.html#common-orm-methods
 {
     'name': "Frusec",
 
-    'version': '1.13',
+    'version': '1.14',
 
     'author': "Javier, Jose & Pedro",
 
@@ -12,28 +15,27 @@
 
     'sequence': -100,
 
-    #'complexity': 'easy',
+    'complexity': 'easy',
 
-    # Short (1 phrase/line) summary of the module's purpose, used as subtitle on 
-    # modules listing or apps.openerp.com
+    # Descripción corta (1 línea) del propósito del módulo, usado como subtítulo 
+    # en el listado de módulos o en apps.openerp.com
     'summary': "Compañía minorista de venta de frutos secos.",
 
-    # Long description of module's purpose
+    # Descripción extendida del propósito del módulo
     'description': """Módulo encargado de gestionar la empresa Frusec,
             concretamente el apartado de pedidos y facturas.""",
 
-    # Categories can be used to filter modules in modules listing.
-    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
+    # Las categorías se pueden usar para filtrar el módulo en el listado de módulos.
+    # Lista completa en https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     'category': 'Sale Management',
 
-    # Icon for the module
+    # Icono del módulo
     'images': ['static/description/icon.png'],
 
-    # any module necessary for this one to work correctly
+    # Módulos necesarios para que éste módulo funcione
     'depends': ['base'],
 
-    # always loaded
+    # Datos cargados por el módulo
     'data': [
         'security/ir.model.access.csv',
         'views/data.xml',
@@ -42,11 +44,11 @@
         'views/vista_product.xml',
         'views/vista_client.xml',
     ],
-    # only loaded in demonstration mode
+    # Datos cargados solamente en modo de demostración
     #'demo': [
     #    'demo/demo.xml',
     #],
 
-    # to make your module an application.
+    # Convierte el módulo en aplicación.
     'application': True,
 }
