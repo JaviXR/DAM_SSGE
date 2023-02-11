@@ -114,7 +114,7 @@
 
         <!-- menu categories -->
 
-        <menuitem name="Products" id="frusec_products" parent="frusec_root" sequence="20"
+        <menuitem name="Productos" id="frusec_products" parent="frusec_root" sequence="20"
             action="product_action_window" />
 
     </data>

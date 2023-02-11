@@ -9,7 +9,7 @@
             <field name="name">frusec.client.search</field>
             <field name="model">frusec.client</field>
             <field name="arch" type="xml">
-                <search string="Clients">
+                <search string="Clientes">
                     <field name="name" />
                     <field name="phone" />
                     <field name="contact" />
@@ -23,11 +23,10 @@
         <!-- client form view -->
 
         <record id="frusec_client_view_form" model="ir.ui.view">
-            <field name="name">
-                frusec.client.form</field>
+            <field name="name">frusec.client.form</field>
             <field name="model">frusec.client</field>
             <field name="arch" type="xml">
-                <form string='Clients'>
+                <form string='Clientes'>
                     <sheet>
                         <group>
                             <group>
@@ -49,21 +48,20 @@
         <!-- actions opening views on models -->
 
         <record model="ir.actions.act_window" id="client_action_window">
-            <field name="name">Client
-                List</field>
+            <field name="name">Lista de clientes</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">frusec.client</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create a new client!
+                    ¿Crea tu primer cliente!
                 </p>
             </field>
         </record>
 
         <!-- menu categories -->
 
-        <menuitem name="Clients" id="frusec_clients" parent="frusec_root" sequence="30" action="client_action_window" />
+        <menuitem name="Clientes" id="frusec_clients" parent="frusec_root" sequence="30" action="client_action_window" />
 
     </data>
 </odoo>
