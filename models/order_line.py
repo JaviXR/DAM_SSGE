@@ -11,7 +11,7 @@ class OrderLine(models.Model):
 
     order_id = fields.Many2one('frusec.order', string='Pedido')
     currency_id = fields.Many2one(comodel_name='res.currency', related='order_id.currency_id')
-
+    
     product_qty = fields.Integer(string='Cantidad', required=True, default=1)
     price_subtotal = fields.Float('Subtotal', compute='_compute_price_subtotal')
 
