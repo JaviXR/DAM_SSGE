@@ -22,6 +22,7 @@
 					<filter name="state_4" string="Completado" domain="[('state', '=', 'state_4')]" />
 					<group expand="1" string="Group By">
 						<filter name="client_id" string="Cliente" context="{'group_by': 'client_id'}" />
+						<filter name="client_id" string="Fecha" context="{'group_by': 'datetime'}" />
 						<filter name="client_id" string="Estado" context="{'group_by': 'state'}" />
 					</group>
 				</search>
@@ -86,7 +87,7 @@
 										<field name="currency_id" invisible="1" />
 										<field name="product_id" />
 										<field name="product_qty" />
-										<field name="price_subtotal" widget="monetary" />
+										<field name="price_subtotal" widget="monetary" sum="1" />
 									</tree>
 									<form>
 										<field name="currency_id" invisible="1" />

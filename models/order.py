@@ -28,17 +28,17 @@ class Order(models.Model):
     def create(self, vals):
         if not vals.get('note'):
             vals['note'] = 'Nota vacía'
-        if vals.get('order_code', _('New Order')) == _('Nuevo pedido'):
+        if vals.get('order_code', _('Nuevo pedido')) == _('Nuevo pedido'):
             vals['order_code'] = self.env['ir.sequence'].next_by_code('frusec.order') or ('Nuevo pedido')
             
         return super(Order, self).create(vals)
 
     @api.depends('order_lines')
     def _compute_total_price(self):
-        Orderline = self.env['frusec.order.line']
         for order in self:
+            OrderLines = self.env['frusec.order.line'].search([('order_id', '=', order.id)])
             total = 0.00
-            for subtotal in Orderline.search([('order_id', '=', 'frusec.order_id')]):
+            for subtotal in OrderLines:
                 total += subtotal.price_subtotal
             order.total_price = total
         
