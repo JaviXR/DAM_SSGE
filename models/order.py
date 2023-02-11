@@ -3,6 +3,7 @@ from odoo import models, fields, api, _
 
 class Order(models.Model):
     _name = 'frusec.order'
+    _rec_name= 'order_code'
     _description = 'Plantilla de pedido'
 
     order_code = fields.Char(string='Pedido', required=True, copy=False, readonly=True, 
